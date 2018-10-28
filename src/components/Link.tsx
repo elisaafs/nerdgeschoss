@@ -1,5 +1,5 @@
 import React from "react";
-import "./Links.css";
+import "./Link.css";
 import { Link as LinkType } from "../types/links";
 
 interface Props {
@@ -12,23 +12,29 @@ interface Props {
 
 export default function Link(props: Props) {
   let likeButton;
+  let unlikeButton;
   if (props.isLoggedIn) {
-    if (props.link.liked) {
+    if (!props.link.liked) {
       likeButton = (
         <div
-          className="Links-deslike"
-          onClick={() => props.handleUnlike(props.link.id)}
+          className="Link-like"
+          onClick={() => props.handleLike(props.link.id)}
         >
-          <i className="fas fa-thumbs-down" />
+          <i className="fas fa-thumbs-up" />
         </div>
       );
     } else {
       likeButton = (
-        <div
-          className="Links-like"
-          onClick={() => props.handleLike(props.link.id)}
-        >
+        <div className="Link-like Link-liked">
           <i className="fas fa-thumbs-up" />
+        </div>
+      );
+      unlikeButton = (
+        <div
+          className="Link-like"
+          onClick={() => props.handleUnlike(props.link.id)}
+        >
+          <i className="fas fa-thumbs-down" />
         </div>
       );
     }
@@ -36,17 +42,20 @@ export default function Link(props: Props) {
 
   return (
     <div>
-      <div className="Links-title">
-        <a href={props.link.url} target="_blank">
-          {props.link.title}
+      <div className="Link">
+        <a className="Link-title" href={props.link.url} target="_blank">
+          {props.link.title || props.link.url}
         </a>
       </div>
-      <div className="Links-like-count">{props.link.description}</div>
-      <div className="Links-like-count">{props.link.like_count}</div>
-      {likeButton}
+      <div className="Link-description">{props.link.description}</div>
+      <div className="Link-wrapper">
+        <div className="Link-like-count">{props.link.like_count}</div>
+        {likeButton}
+        {unlikeButton}
+      </div>
       {props.link.owned ? (
         <button
-          className="Links-delete-button"
+          className="Link-delete-button"
           onClick={() => props.handleDeleteLink(props.link.id)}
         >
           Delete

@@ -2,7 +2,7 @@ import React from "react";
 import FacebookLogin, { ReactFacebookLoginInfo } from "react-facebook-login";
 import axios from "axios";
 
-import "./Links.css";
+import "./LoginLogout.css";
 import config from "../config";
 import { Link } from "../types/links";
 
@@ -54,7 +54,11 @@ export default class LoginLogout extends React.Component<Props> {
         />
       );
     } else {
-      return <button onClick={this.handleLogout}>Logout!</button>;
+      return (
+        <button className="LoginLogout-buttom" onClick={this.handleLogout}>
+          Logout
+        </button>
+      );
     }
   }
 }

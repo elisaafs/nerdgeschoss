@@ -182,21 +182,27 @@ class App extends Component<Props, AppState> {
   render() {
     return (
       <div className="App-page">
-        <LoginLogout
-          sessionId={this.state.sessionId}
-          onLogin={this.handleLogin}
-          onLogout={this.handleLogout}
-        />
-        {this.state.sessionId && (
-          <LinkCreator onSubmit={this.handleNewLinkSubmission} />
-        )}
-        <Links
-          links={organizeByDays(this.state.links)}
-          handleLike={this.handleLike}
-          handleUnlike={this.handleUnlike}
-          handleDeleteLink={this.handleDeleteLink}
-          isLoggedIn={this.state.sessionId !== undefined}
-        />
+        <div className="App-wrapper">
+          <div className="App-wrapper-title">
+            <div className="App-title">Nerdgeschoss News</div>
+            <LoginLogout
+              sessionId={this.state.sessionId}
+              onLogin={this.handleLogin}
+              onLogout={this.handleLogout}
+            />
+          </div>
+
+          {this.state.sessionId && (
+            <LinkCreator onSubmit={this.handleNewLinkSubmission} />
+          )}
+          <Links
+            links={organizeByDays(this.state.links)}
+            handleLike={this.handleLike}
+            handleUnlike={this.handleUnlike}
+            handleDeleteLink={this.handleDeleteLink}
+            isLoggedIn={this.state.sessionId !== undefined}
+          />
+        </div>
       </div>
     );
   }

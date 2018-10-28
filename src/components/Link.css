@@ -1,0 +1,71 @@
+.Link-title {
+  font-size: 15px;
+  text-decoration: none;
+  color: black;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.Link-description {
+  font-size: 13px;
+  margin-top: 3px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.Link-wrapper {
+  display: flex;
+  margin-top: 3px;
+}
+
+.Link-like {
+  margin-left: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #828282;
+  position: relative;
+}
+
+.Link-liked {
+  transition: 2s;
+  opacity: 0.3;
+  cursor: auto;
+  animation-duration: 0.5s;
+  animation-iteration-count: 2;
+  animation-name: Link-jump;
+}
+
+@keyframes Link-jump {
+  from {
+    top: 0;
+  }
+
+  50% {
+    top: -5px;
+  }
+
+  to {
+    top: 0;
+  }
+}
+
+.Link-like-count {
+  font-size: 12px;
+  color: #828282;
+
+  margin-left: 10px;
+}
+
+.Link {
+  margin-top: 5px;
+}
+
+.Link-delete-button {
+  margin-top: 10px;
+  cursor: pointer;
+  height: 20px;
+  width: 60px;
+  font-weight: bold;
+  background-color: #f6f6ef;
+  border: none;
+}
